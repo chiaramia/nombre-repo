@@ -1,5 +1,8 @@
 package com.app.persistencia;
 
+import java.util.List;
+
+import com.app.logica.Artista;
 import com.app.logica.Cancion;
 
 import jakarta.persistence.EntityManager;
@@ -46,6 +49,30 @@ public class CancionJpaController {
 			}
 		}
 	}
+	
+	// BUSCAR UNO: busca una cancion por su id.
+		// No hace falta transacción porque no modifica nada en la base.
+		public Cancion buscarUno(int id) {
+		EntityManager em = getEntityManager();
+		try {
+		// find busca por clave primaria. Si no existe, devuelve null.
+		return em.find(Cancion.class, id);
+		} finally {
+		em.close();
+		}
+		}
+		// BUSCAR TODOS: devuelve una lista con todos las canciones.
+		public List<Cancion> buscarTodos() {
+		EntityManager em = getEntityManager();
+		try {
+		// Consulta JPQL: "traeme todos los objetos Cancion"
+		return em.createQuery("SELECT a FROM Cancion c", Cancion.class)
+		.getResultList();
+		} finally {
+		em.close();
+		}
+		}
+	
 }
 
 

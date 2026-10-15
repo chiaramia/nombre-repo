@@ -1,5 +1,7 @@
 package com.app.persistencia;
 
+import java.util.List;
+
 import com.app.logica.Artista;
 import com.app.logica.Cancion;
 
@@ -25,6 +27,25 @@ public class ControladoraPersistencia {
 		// Delegamos la tarea al controlador especializado
 		CancionJpa.crear(cancion);
 	}
+	
+	// BUSCAR UN ARTISTA
+	public Artista buscarArtista(int id) {
+	return artistaJpa.buscarUno(id);
+	}
+	// BUSCAR TODOS LOS ARTISTAS
+	public List<Artista> buscarTodosLosArtistas() {
+	return artistaJpa.buscarTodos();
+	}
+	
+	// BUSCAR UNA CANCION
+	public Cancion buscarCanciones(int id) {
+	return CancionJpa.buscarUno(id);
+	}
+	// BUSCAR TODAS LAS CANCIONES
+	public List<Cancion> buscarTodosLasCanciones() {
+	return CancionJpa.buscarTodos();
+	}
+	
 }
 
 

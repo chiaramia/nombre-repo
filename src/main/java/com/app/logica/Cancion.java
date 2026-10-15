@@ -40,6 +40,15 @@ public class Cancion implements Serializable {
     public void setDuracion(int duracion) { this.duracion = duracion; }
     public int getAnio() { return anio; }
     public void setAnio(int anio) { this.anio = anio; }
+
+	@Override
+	public String toString() {
+		return "Cancion [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", anio=" + anio + ", getId()="
+				+ getId() + ", getTitulo()=" + getTitulo() + ", getDuracion()=" + getDuracion() + ", getAnio()="
+				+ getAnio() + "]";
+	}
+    
+    
 }
 
 

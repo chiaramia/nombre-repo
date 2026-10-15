@@ -1,5 +1,7 @@
 package com.app.logica;
 
+import java.util.List;
+
 import com.app.persistencia.ControladoraPersistencia;
 
 public class ControladoraLogica {
@@ -59,7 +61,25 @@ public class ControladoraLogica {
 		controlPersis.crearCancion(can);
 	}
 
-
+		// BUSCAR UN ARTISTA por su id
+		public Artista buscarUnArtista(int id) {
+		return controlPersis.buscarArtista(id);
+		}
+		// LISTAR TODOS LOS ARTISTAS
+		public List<Artista> listarArtistas() {
+		return controlPersis.buscarTodosLosArtistas();
+		}
+		
+		// BUSCAR UNA CANCION por su id
+				public Cancion buscarCancion(int id) {
+				return controlPersis.buscarCanciones(id);
+				}
+				
+				// LISTAR TODAS LAS CANCIONES
+				public List<Cancion> listarCanciones() {
+				return controlPersis.buscarTodosLasCanciones();
+				}
+		
 }
 
 

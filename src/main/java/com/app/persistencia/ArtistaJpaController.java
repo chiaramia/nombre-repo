@@ -1,5 +1,7 @@
 package com.app.persistencia;
 
+import java.util.List;
+
 import com.app.logica.Artista;
 
 import jakarta.persistence.EntityManager;
@@ -45,6 +47,29 @@ public class ArtistaJpaController {
 				em.close();
 			}
 		}
+	}
+	
+	// BUSCAR UNO: busca un artista por su id.
+	// No hace falta transacción porque no modifica nada en la base.
+	public Artista buscarUno(int id) {
+	EntityManager em = getEntityManager();
+	try {
+	// find busca por clave primaria. Si no existe, devuelve null.
+	return em.find(Artista.class, id);
+	} finally {
+	em.close();
+	}
+	}
+	// BUSCAR TODOS: devuelve una lista con todos los artistas.
+	public List<Artista> buscarTodos() {
+	EntityManager em = getEntityManager();
+	try {
+	// Consulta JPQL: "traeme todos los objetos Artista"
+	return em.createQuery("SELECT a FROM Artista a", Artista.class)
+	.getResultList();
+	} finally {
+	em.close();
+	}
 	}
 }
 
